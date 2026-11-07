@@ -4,261 +4,472 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>T.B.P. - Games</title>
+<title>T.B.P. - Browser Games</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;background:#101116;color:#eee;
- font-family:Arial,sans-serif
+ margin:0;
+ background:#000;
+ color:#fff;
+ font-family:Arial,sans-serif;
 }
+
 header{
- height:65px;background:#17181f;
- display:flex;align-items:center;justify-content:space-between;
- padding:0 22px;border-bottom:1px solid #292a32;
- position:sticky;top:0;z-index:4
+ height:65px;
+ background:#000;
+ border-bottom:1px solid #222;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ padding:0 22px;
+ position:sticky;
+ top:0;
+ z-index:5;
 }
-.logo{font-size:25px;font-weight:900;color:#fff}
-.logo span{color:#a78bfa}
-.header-right{color:#aaa;font-size:13px}
-.layout{display:flex;min-height:calc(100vh - 65px)}
+
+.logo{
+ font-size:25px;
+ font-weight:900;
+ letter-spacing:1px;
+}
+
+.header-right{
+ color:#888;
+ font-size:12px;
+}
+
+.layout{
+ display:flex;
+ min-height:calc(100vh - 65px);
+}
+
 aside{
- width:205px;padding:24px 14px;
- background:#15161d;border-right:1px solid #292a32;
- flex-shrink:0
+ width:205px;
+ padding:24px 14px;
+ background:#000;
+ border-right:1px solid #222;
+ flex-shrink:0;
 }
+
 .navtitle{
- color:#777;font-size:11px;font-weight:bold;
- margin:10px 12px
+ color:#666;
+ font-size:11px;
+ font-weight:bold;
+ margin:10px 12px;
 }
+
 .nav{
- display:block;width:100%;text-align:left;
- background:transparent;border:0;color:#aaa;
- padding:13px 12px;border-radius:8px;
- margin:3px 0;font-size:14px
+ display:block;
+ width:100%;
+ text-align:left;
+ background:transparent;
+ border:0;
+ color:#999;
+ padding:13px 12px;
+ border-radius:5px;
+ margin:3px 0;
+ font-size:14px;
 }
+
 .nav.active,.nav:hover{
- background:#292536;color:white
+ background:#191919;
+ color:white;
 }
-main{padding:27px;width:100%;max-width:1200px;margin:auto}
+
+main{
+ padding:27px;
+ width:100%;
+ max-width:1200px;
+ margin:auto;
+}
+
 .welcome{
- padding:24px;border-radius:13px;
- background:linear-gradient(110deg,#29213d,#1c2030);
- border:1px solid #393047;margin-bottom:25px
+ padding:25px;
+ background:#080808;
+ border:1px solid #242424;
+ border-radius:8px;
+ margin-bottom:25px;
 }
-.welcome h1{font-size:25px;margin:0 0 9px}
-.welcome p{color:#b5b1c5;margin:0;font-size:14px}
+
+.welcome h1{
+ font-size:25px;
+ margin:0 0 9px;
+}
+
+.welcome p{
+ color:#888;
+ margin:0;
+ font-size:14px;
+}
+
 .search{
- width:100%;padding:14px 16px;
- background:#1a1b23;border:1px solid #343540;
- border-radius:9px;color:white;font-size:15px;
- outline:none;margin-bottom:25px
+ width:100%;
+ padding:15px;
+ background:#080808;
+ border:1px solid #292929;
+ border-radius:7px;
+ color:white;
+ font-size:15px;
+ outline:none;
+ margin-bottom:25px;
 }
-.search:focus{border-color:#a78bfa}
+
+.search:focus{
+ border-color:#777;
+}
+
 .sectionhead{
- display:flex;justify-content:space-between;
- align-items:center;margin:25px 0 15px
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin:25px 0 15px;
 }
-.sectionhead h2{font-size:19px;margin:0}
-.sectionhead span{color:#999;font-size:12px}
+
+.sectionhead h2{
+ font-size:19px;
+ margin:0;
+}
+
+.sectionhead span{
+ color:#777;
+ font-size:12px;
+}
+
 .grid{
  display:grid;
  grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
- gap:15px
+ gap:15px;
 }
+
 .game{
- background:#1a1b23;border:1px solid #30313c;
- border-radius:10px;overflow:hidden;
- transition:.2s
+ background:#080808;
+ border:1px solid #242424;
+ border-radius:7px;
+ overflow:hidden;
+ transition:.2s;
 }
-.game:hover{transform:translateY(-3px);border-color:#8064ba}
+
+.game:hover{
+ border-color:#666;
+ transform:translateY(-2px);
+}
+
 .cover{
- height:115px;display:flex;align-items:center;
- justify-content:center;font-size:46px;
- background:linear-gradient(135deg,#35304c,#222633)
+ width:100%;
+ aspect-ratio:16/10;
+ background:#111;
+ overflow:hidden;
 }
-.info{padding:12px}
-.info h3{font-size:14px;margin:0 0 7px}
-.info p{font-size:12px;color:#92939e;margin:0 0 12px}
+
+.cover img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ display:block;
+}
+
+.info{
+ padding:12px;
+}
+
+.info h3{
+ font-size:14px;
+ margin:0 0 7px;
+}
+
+.info p{
+ font-size:12px;
+ color:#888;
+ margin:0 0 12px;
+}
+
 .play{
- background:#8060c2;color:white;border:0;
- padding:9px;border-radius:6px;width:100%;
- font-weight:bold
+ background:#222;
+ color:white;
+ border:1px solid #444;
+ padding:9px;
+ border-radius:5px;
+ width:100%;
+ font-weight:bold;
 }
-.play:disabled{background:#34343e;color:#888}
-.tabs{display:flex;gap:9px;margin-bottom:16px}
+
+.play:active{
+ background:#444;
+}
+
+.play:disabled{
+ background:#111;
+ color:#666;
+ border-color:#292929;
+}
+
+.tabs{
+ display:flex;
+ gap:9px;
+ margin-bottom:16px;
+ flex-wrap:wrap;
+}
+
 .tab{
- background:#1c1d25;border:1px solid #363741;
- color:#aaa;padding:9px 15px;border-radius:7px
+ background:#080808;
+ border:1px solid #333;
+ color:#aaa;
+ padding:9px 15px;
+ border-radius:5px;
 }
-.tab.active{background:#7050ac;color:white}
-#empty{display:none;color:#999;text-align:center;padding:35px}
+
+.tab.active{
+ background:#292929;
+ color:white;
+ border-color:#666;
+}
+
+#empty{
+ display:none;
+ color:#888;
+ text-align:center;
+ padding:35px;
+}
+
 footer{
- text-align:center;color:#686976;
- padding:35px;font-size:12px
+ text-align:center;
+ color:#666;
+ padding:35px;
+ font-size:12px;
 }
+
 #modal{
- display:none;position:fixed;inset:0;
- background:#090a0eee;z-index:10;
- padding:15px;align-items:center;justify-content:center
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#000f;
+ z-index:10;
+ padding:15px;
+ align-items:center;
+ justify-content:center;
 }
+
 .modalbox{
- width:100%;max-width:750px;background:#1a1b23;
- border:1px solid #383945;border-radius:12px;padding:18px
+ width:100%;
+ max-width:750px;
+ background:#080808;
+ border:1px solid #333;
+ border-radius:8px;
+ padding:18px;
 }
-.modalhead{display:flex;justify-content:space-between;align-items:center}
-.modalhead button{background:none;border:0;color:white;font-size:23px}
+
+.modalhead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+
+.modalhead button{
+ background:none;
+ border:0;
+ color:white;
+ font-size:23px;
+}
+
 #playarea{
- min-height:240px;background:#101116;
- border-radius:9px;margin-top:15px;
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;text-align:center;padding:20px
+ min-height:240px;
+ background:#111;
+ border-radius:7px;
+ margin-top:15px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ text-align:center;
+ padding:20px;
 }
+
 #playarea button{
- background:#8060c2;color:white;border:0;
- padding:13px 20px;border-radius:8px
+ background:#292929;
+ color:white;
+ border:1px solid #555;
+ padding:13px 20px;
+ border-radius:5px;
 }
+
 @media(max-width:650px){
  aside{display:none}
  main{padding:16px}
- .welcome{padding:19px}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .cover{height:100px}
+ .grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+ }
  header{padding:0 15px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">T.B.<span>P.</span></div>
+ <div class="logo">T.B.P.</div>
  <div class="header-right">BROWSER GAMES</div>
 </header>
 
 <div class="layout">
+
 <aside>
  <div class="navtitle">MENU</div>
  <button class="nav active" onclick="showSection('featured',this)">✦ Featured Games</button>
  <button class="nav" onclick="showSection('all',this)">▦ All Games</button>
- <button class="nav" onclick="showSection('horror',this)">☠ Horror</button>
- <button class="nav" onclick="showSection('arcade',this)">⚡ Arcade</button>
+ <button class="nav" onclick="showSection('horror',this)">Horror</button>
+ <button class="nav" onclick="showSection('arcade',this)">Arcade</button>
+
  <div class="navtitle">ABOUT</div>
- <button class="nav" onclick="alert('T.B.P. Browser Games')">ⓘ About T.B.P.</button>
+ <button class="nav" onclick="alert('T.B.P. Browser Games')">About T.B.P.</button>
 </aside>
 
 <main>
- <div class="welcome">
-  <h1>Welcome to T.B.P.</h1>
-  <p>Your place to discover and play browser games.</p>
+
+<div class="welcome">
+ <h1>Welcome to T.B.P.</h1>
+ <p>Your place to discover and play browser games.</p>
+</div>
+
+<input class="search" id="search"
+ placeholder="Search games..."
+ oninput="updateGames()">
+
+<section id="featured">
+ <div class="sectionhead">
+  <h2>Featured Games</h2>
+  <span>Featured</span>
  </div>
 
- <input class="search" id="search"
- placeholder="⌕ Search games..." oninput="updateGames()">
+ <div class="grid">
 
- <section id="featured">
-  <div class="sectionhead">
-   <h2>Featured Games</h2><span>Highlighted</span>
-  </div>
-  <div class="grid">
-   <div class="game" data-name="scp containment breach" data-cat="horror">
-    <div class="cover">👁️</div>
-    <div class="info">
-     <h3>SCP: Containment Breach</h3>
-     <p>Horror / Survival</p>
-     <button class="play" disabled>Coming Soon</button>
-    </div>
+  <div class="game">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=SCP+CONTAINMENT+BREACH" alt="SCP placeholder">
    </div>
-   <div class="game" data-name="reflex test" data-cat="arcade">
-    <div class="cover">⚡</div>
-    <div class="info">
-     <h3>Reflex Test</h3>
-     <p>Arcade / Skill</p>
-     <button class="play" onclick="openGame('reflex')">Play</button>
-    </div>
+   <div class="info">
+    <h3>SCP: Containment Breach</h3>
+    <p>Horror / Survival</p>
+    <button class="play" disabled>Coming Soon</button>
    </div>
   </div>
- </section>
 
- <section id="library">
-  <div class="sectionhead">
-   <h2>All Games</h2><span id="count">4 Games</span>
-  </div>
-  <div class="tabs">
-   <button class="tab active" onclick="setCategory('all',this)">All</button>
-   <button class="tab" onclick="setCategory('horror',this)">Horror</button>
-   <button class="tab" onclick="setCategory('arcade',this)">Arcade</button>
-  </div>
-  <div class="grid" id="games">
-   <div class="game" data-name="scp containment breach" data-cat="horror">
-    <div class="cover">👁️</div>
-    <div class="info">
-     <h3>SCP: Containment Breach</h3>
-     <p>Horror / Survival</p>
-     <button class="play" disabled>Coming Soon</button>
-    </div>
+  <div class="game">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=REFLEX+TEST" alt="Reflex Test placeholder">
    </div>
-   <div class="game" data-name="reflex test" data-cat="arcade">
-    <div class="cover">⚡</div>
-    <div class="info">
-     <h3>Reflex Test</h3>
-     <p>Arcade / Skill</p>
-     <button class="play" onclick="openGame('reflex')">Play</button>
-    </div>
-   </div>
-   <div class="game" data-name="coming soon horror" data-cat="horror">
-    <div class="cover">💀</div>
-    <div class="info">
-     <h3>Horror Game</h3>
-     <p>More horror games soon.</p>
-     <button class="play" disabled>Coming Soon</button>
-    </div>
-   </div>
-   <div class="game" data-name="coming soon arcade" data-cat="arcade">
-    <div class="cover">🎮</div>
-    <div class="info">
-     <h3>Arcade Game</h3>
-     <p>More arcade games soon.</p>
-     <button class="play" disabled>Coming Soon</button>
-    </div>
+   <div class="info">
+    <h3>Reflex Test</h3>
+    <p>Arcade / Skill</p>
+    <button class="play" onclick="openGame()">Play</button>
    </div>
   </div>
-  <div id="empty">No games found.</div>
- </section>
+
+ </div>
+</section>
+
+<section id="library">
+ <div class="sectionhead">
+  <h2>All Games</h2>
+  <span id="count">4 Games</span>
+ </div>
+
+ <div class="tabs">
+  <button class="tab active" onclick="setCategory('all',this)">All</button>
+  <button class="tab" onclick="setCategory('horror',this)">Horror</button>
+  <button class="tab" onclick="setCategory('arcade',this)">Arcade</button>
+ </div>
+
+ <div class="grid" id="games">
+
+  <div class="game" data-name="scp containment breach" data-cat="horror">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=SCP+173" alt="SCP game">
+   </div>
+   <div class="info">
+    <h3>SCP: Containment Breach</h3>
+    <p>Horror / Survival</p>
+    <button class="play" disabled>Coming Soon</button>
+   </div>
+  </div>
+
+  <div class="game" data-name="reflex test" data-cat="arcade">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=REFLEX+TEST" alt="Reflex game">
+   </div>
+   <div class="info">
+    <h3>Reflex Test</h3>
+    <p>Arcade / Skill</p>
+    <button class="play" onclick="openGame()">Play</button>
+   </div>
+  </div>
+
+  <div class="game" data-name="horror game" data-cat="horror">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=HORROR+GAME" alt="Horror placeholder">
+   </div>
+   <div class="info">
+    <h3>Horror Game</h3>
+    <p>Horror</p>
+    <button class="play" disabled>Coming Soon</button>
+   </div>
+  </div>
+
+  <div class="game" data-name="arcade game" data-cat="arcade">
+   <div class="cover">
+    <img src="https://placehold.co/600x375/111111/777777?text=ARCADE+GAME" alt="Arcade placeholder">
+   </div>
+   <div class="info">
+    <h3>Arcade Game</h3>
+    <p>Arcade</p>
+    <button class="play" disabled>Coming Soon</button>
+   </div>
+  </div>
+
+ </div>
+
+ <div id="empty">No games found.</div>
+</section>
+
 </main>
 </div>
 
-<footer>T.B.P. Browser Games · 2026</footer>
+<footer>T.B.P. Browser Games © 2026</footer>
 
 <div id="modal">
  <div class="modalbox">
   <div class="modalhead">
-   <h2 id="gametitle">Game</h2>
+   <h2>Reflex Test</h2>
    <button onclick="closeGame()">✕</button>
   </div>
-  <div id="playarea"></div>
+  <div id="playarea">
+   <p>Wait until the screen turns green!</p>
+   <button onclick="startReflex()">START</button>
+  </div>
  </div>
 </div>
 
 <script>
 let category='all';
-let reactionTimer=null;
+let reactionTimer;
 let reactionReady=false;
 let reactionStart=0;
 
 function showSection(type,btn){
  document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
  btn.classList.add('active');
- if(type==='featured'){
-  document.getElementById('featured').style.display='block';
-  document.getElementById('library').style.display='block';
-  setCategory('all',document.querySelector('.tab'));
- }else{
-  document.getElementById('featured').style.display='none';
-  document.getElementById('library').style.display='block';
-  if(type==='all')type='all';
-  setCategory(type==='horror'||type==='arcade'?type:'all',
-  document.querySelectorAll('.tab')[type==='horror'?1:type==='arcade'?2:0]);
- }
- updateGames();
+
+ document.getElementById('featured').style.display=
+ type==='featured'?'block':'none';
+
+ document.getElementById('library').style.display='block';
+
+ let cat=['horror','arcade'].includes(type)?type:'all';
+ setCategory(cat,document.querySelectorAll('.tab')[
+ cat==='horror'?1:cat==='arcade'?2:0
+ ]);
 }
 
 function setCategory(cat,btn){
@@ -271,49 +482,50 @@ function setCategory(cat,btn){
 function updateGames(){
  const query=document.getElementById('search').value.toLowerCase();
  let visible=0;
+
  document.querySelectorAll('#games .game').forEach(game=>{
   const matches=game.dataset.name.includes(query);
   const cat=category==='all'||game.dataset.cat===category;
   game.style.display=matches&&cat?'block':'none';
   if(matches&&cat)visible++;
  });
+
  document.getElementById('empty').style.display=visible?'none':'block';
  document.getElementById('count').textContent=visible+' Games';
 }
 
-function openGame(type){
+function openGame(){
  document.getElementById('modal').style.display='flex';
- document.getElementById('gametitle').textContent='Reflex Test';
- document.getElementById('playarea').innerHTML=
- '<p>Wait until the screen turns green, then tap it!</p><button onclick="startReflex()">START</button><p id="score"></p>';
 }
 
 function startReflex(){
  clearTimeout(reactionTimer);
  reactionReady=false;
  const area=document.getElementById('playarea');
- area.style.background='#20202b';
+ area.style.background='#111';
  area.innerHTML='<p>Wait...</p>';
+
  reactionTimer=setTimeout(()=>{
   reactionReady=true;
   reactionStart=Date.now();
-  area.style.background='#167b43';
-  area.innerHTML='<button style="background:#167b43" onclick="finishReflex()">TAP NOW!</button>';
+  area.style.background='#164b28';
+  area.innerHTML='<button onclick="finishReflex()">TAP NOW!</button>';
  },1200+Math.random()*3000);
 }
 
 function finishReflex(){
+ const area=document.getElementById('playarea');
+
  if(!reactionReady){
   clearTimeout(reactionTimer);
-  document.getElementById('playarea').innerHTML=
-  '<p>Too early! Try again.</p><button onclick="startReflex()">RETRY</button>';
+  area.innerHTML='<p>Too early!</p><button onclick="startReflex()">RETRY</button>';
   return;
  }
+
  const score=Date.now()-reactionStart;
  reactionReady=false;
- document.getElementById('playarea').style.background='#20202b';
- document.getElementById('playarea').innerHTML=
- '<h2>'+score+' ms</h2><p>Your reaction time!</p><button onclick="startReflex()">PLAY AGAIN</button>';
+ area.style.background='#111';
+ area.innerHTML='<h2>'+score+' ms</h2><p>Your reaction time!</p><button onclick="startReflex()">PLAY AGAIN</button>';
 }
 
 function closeGame(){
@@ -322,5 +534,6 @@ function closeGame(){
  document.getElementById('modal').style.display='none';
 }
 </script>
+
 </body>
 </html>
