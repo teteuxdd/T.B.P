@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T.B.P - Browser Games</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090b12;color:white;
+ font-family:Arial,sans-serif;
+}
+header{
+ padding:22px 18px;
+ background:#111522;
+ border-bottom:1px solid #292f40;
+}
+.logo{font-size:29px;font-weight:900;color:#a78bfa}
+header p{color:#9299ad;margin-bottom:0}
+main{padding:20px;max-width:1000px;margin:auto}
+input{
+ width:100%;padding:15px;border-radius:12px;
+ border:1px solid #343b50;background:#151a28;
+ color:white;font-size:16px;margin-bottom:20px;
+}
+h2{font-size:21px}
+.categories{display:flex;gap:9px;flex-wrap:wrap}
+.category{
+ background:#1b2030;color:white;border:1px solid #343b50;
+ padding:10px 15px;border-radius:20px;
+}
+.category.active{background:#7652d6}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+ gap:15px;margin-top:18px;
+}
+.card{
+ background:#151a28;border:1px solid #292f40;
+ border-radius:14px;overflow:hidden;
+}
+.cover{
+ height:115px;display:grid;place-items:center;
+ font-size:45px;background:linear-gradient(135deg,#29214c,#171b2c);
+}
+.info{padding:13px}
+.info h3{margin:0 0 8px;font-size:17px}
+.info p{color:#9ba2b5;font-size:13px;min-height:30px}
+.play{
+ width:100%;padding:11px;border:0;border-radius:9px;
+ background:#7652d6;color:white;font-weight:bold;
+}
+.play:disabled{background:#34394a;color:#aaa}
+footer{text-align:center;padding:30px;color:#737b90}
+#game{
+ display:none;position:fixed;inset:0;background:#090b12;
+ z-index:5;padding:22px;text-align:center;
+}
+#game button{
+ padding:15px 25px;border:0;border-radius:10px;
+ background:#7652d6;color:white;font-size:17px;
+}
+#target{margin-top:35px;padding:35px;background:#20263a;
+ border-radius:15px;font-size:20px}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">T.B.P.</div>
+ <p>Play many browser games!</p>
+</header>
+
+<main>
+ <h2>Explorar jogos</h2>
+ <input id="search" placeholder="Pesquisar jogos...">
+
+ <div class="categories">
+  <button class="category active" onclick="filter('all',this)">Todos</button>
+  <button class="category" onclick="filter('terror',this)">Terror</button>
+  <button class="category" onclick="filter('arcade',this)">Arcade</button>
+ </div>
+
+ <div class="grid" id="games">
+
+  <div class="card" data-name="scp containment breach" data-category="terror">
+   <div class="cover">👁️</div>
+   <div class="info">
+    <h3>SCP: Containment Breach</h3>
+    <p>Escape da instalação SCP.</p>
+    <button class="play" disabled>Em desenvolvimento</button>
+   </div>
+  </div>
+
+  <div class="card" data-name="teste de reflexo" data-category="arcade">
+   <div class="cover">⚡</div>
+   <div class="info">
+    <h3>Teste de Reflexo</h3>
+    <p>Teste sua velocidade de reação.</p>
+    <button class="play" onclick="openGame()">JOGAR</button>
+   </div>
+  </div>
+
+  <div class="card" data-name="novo jogo" data-category="arcade">
+   <div class="cover">🎮</div>
+   <div class="info">
+    <h3>Mais jogos</h3>
+    <p>Novidades em breve!</p>
+    <button class="play" disabled>Em breve</button>
+   </div>
+  </div>
+
+ </div>
+</main>
+
+<footer>T.B.P. Browser Games © 2026</footer>
+
+<div id="game">
+ <h2>⚡ Teste de Reflexo</h2>
+ <p>Espere a tela ficar verde e toque nela!</p>
+ <div id="target" onclick="hit()">Toque em começar!</div>
+ <p id="result"></p>
+ <br>
+ <button onclick="start()">COMEÇAR</button>
+ <br><br>
+ <button onclick="closeGame()">VOLTAR AO HUB</button>
+</div>
+
+<script>
+const search=document.getElementById('search');
+let category='all';
+let ready=false,started=false,startTime=0,timer;
+
+function update(){
+ document.querySelectorAll('.card').forEach(card=>{
+  const match=card.dataset.name.includes(search.value.toLowerCase());
+  const cat=category==='all'||card.dataset.category===category;
+  card.style.display=match&&cat?'block':'none';
+ });
+}
+search.addEventListener('input',update);
+
+function filter(cat,btn){
+ category=cat;
+ document.querySelectorAll('.category').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ update();
+}
+
+function openGame(){
+ document.getElementById('game').style.display='block';
+}
+function closeGame(){
+ clearTimeout(timer);
+ document.getElementById('game').style.display='none';
+ ready=false;started=false;
+}
+function start(){
+ clearTimeout(timer);
+ ready=false;started=true;
+ document.getElementById('result').textContent='';
+ const target=document.getElementById('target');
+ target.style.background='#20263a';
+ target.textContent='Espere...';
+ timer=setTimeout(()=>{
+  ready=true;
+  startTime=Date.now();
+  target.style.background='#16834a';
+  target.textContent='TOQUE AGORA!';
+ },1200+Math.random()*3000);
+}
+function hit(){
+ const target=document.getElementById('target');
+ if(!started)return;
+ if(!ready){
+  clearTimeout(timer);
+  started=false;
+  target.textContent='Muito cedo! Tente novamente.';
+  document.getElementById('result').textContent='';
+  return;
+ }
+ const time=Date.now()-startTime;
+ document.getElementById('result').textContent='Seu tempo: '+time+' ms!';
+ target.textContent='Boa! Jogue novamente.';
+ ready=false;started=false;
+}
+</script>
+</body>
+    </html>
+    
